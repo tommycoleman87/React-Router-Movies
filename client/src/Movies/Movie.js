@@ -5,7 +5,7 @@ const Movie = (props) => {
   const [movie, setMovie] = useState();
   const { match } = props;
   const { params } = match;
- console.log(props)
+ 
   useEffect(() => {
     const id = params.id;
     // change ^^^ that line and grab the id from the URL
@@ -15,32 +15,31 @@ const Movie = (props) => {
         .get(`http://localhost:5000/api/movies/${id}`)
         .then(response => {
           setMovie(response.data);
-          console.log(response)
+        //  console.log(response)
         })
         .catch(error => {
-          console.error(error);
+         // console.error(error);
         });
 
   },[props]);
   
   // Uncomment this only when you have moved on to the stretch goals
-  // const saveMovie = () => {
-  //   const addToSavedList = props.addToSavedList;
-  //   addToSavedList(movie)
-  // }
+   const saveMovie = () => {
+     const addToSavedList = props.save;
+     addToSavedList(movie)
+     console.log(movie)
+   }
 
   if (!movie) {
     return <div>Loading movie information...</div>;
   }
 
-  const { title, director, metascore, stars } = movie;
-  console.log(typeof stars)
-  console.log(movie)
+ 
   return (
     <div>
     <MovieCard movie={movie} />
-      <div className="save-button">Save</div>
-    </div>
+      <div className="save-button" onClick={saveMovie}>Save</div>
+      </div>
   );
 }
 
