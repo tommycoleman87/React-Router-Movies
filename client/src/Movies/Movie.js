@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const Movie = (props) => {
   const [movie, setMovie] = useState({});
- 
+ console.log(props)
   useEffect(() => {
     const id = 1;
     // change ^^^ that line and grab the id from the URL
