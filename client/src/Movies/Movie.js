@@ -21,13 +21,12 @@ const Movie = (props) => {
          // console.error(error);
         });
 
-  },[props]);
+  },[params.id]);
   
   // Uncomment this only when you have moved on to the stretch goals
    const saveMovie = () => {
      const addToSavedList = props.save;
      addToSavedList(movie)
-     console.log(movie)
    }
 
   if (!movie) {
